@@ -7,4 +7,5 @@ ros-jazzy-ros2-control \
 ros-jazzy-ros2-controllers \
 ros-jazzy-controller-manager \
 ros-jazzy-moveit \
-ros-jazzy-moveit-py
+ros-jazzy-moveit-py \
+ros-jazzy-ros-gz

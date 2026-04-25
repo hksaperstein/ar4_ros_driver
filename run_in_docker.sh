@@ -82,11 +82,12 @@ done
 # Runtime Flags
 RUNTIME_FLAGS=(
     "-it"
-    "--network=$NETWORK_MODE"
     "--user=$USER_ID:$GROUP_ID"
     "--group-add=sudo"
     "--hostname=$HOSTNAME_VALUE"
     "--workdir=$WORKDIR"
+    "--net=host"
+    "--ipc=host"
     "--rm"
 
 )
@@ -97,9 +98,18 @@ if [ -n "$CONTAINER_NAME" ]; then
 fi
 
 # Build Docker Command
-docker run \
-    "${RUNTIME_FLAGS[@]}" \
-    "${VOLUME_FLAGS[@]}" \
-    "${ENV_FLAGS[@]}" \
-    $DOCKER_IMAGE
+DOCKER_CMD=(
+    "docker" "run"
+    "${RUNTIME_FLAGS[@]}"
+    "${VOLUME_FLAGS[@]}"
+    "${ENV_FLAGS[@]}"
+    "$DOCKER_IMAGE"
+)
+
+# Print the full command
+echo "Running: ${DOCKER_CMD[@]}"
+echo
+
+# Execute the command
+"${DOCKER_CMD[@]}"
     
