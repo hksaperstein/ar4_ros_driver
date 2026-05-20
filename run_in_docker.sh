@@ -71,6 +71,7 @@ done
 # Environment Variables Configuration
 ENV_VARS=(
     "DISPLAY=$DISPLAY"
+    "LIBGL_ALWAYS_SOFTWARE=1"
 )
 
 # Build Environment Flags
