@@ -57,10 +57,11 @@ The following projects showcases additional features and capabilities built on t
 
 This repository is developed and tested against **ROS 2 Jazzy on Ubuntu 24.04**. The installation process consists of several layers:
 
-1. Install ROS 2 Jazzy (base system)
-2. Create and build a ROS 2 workspace
-3. Install ROS control and MoveIt
-4. Clone and build the AR4 ROS driver
+1. Clone the AR4 ROS driver
+2. Enter a ROS2 docker container
+    - Based off ROS2 Jazzy Jalisco (`FROM ros:jazzy`)
+    - Contains ROS2 Control, MoveIt and Gazebo
+4. Build the AR4 ROS driver
 5. Configure serial permissions
 6. Install Arduino + Teensy toolchain
 7. Flash firmware to Teensy and Arduino Nano
@@ -69,7 +70,7 @@ The sections below walk through these steps in a clean, end‑to‑end order.
 
 ---
 
-### 1. Install ROS 2 Jazzy
+### Install ROS 2 Jazzy (OPTIONAL)
 
 Follow the **official ROS 2 Jazzy installation guide for Ubuntu (Debian packages)**:
 
@@ -82,38 +83,21 @@ Make sure that:
 
 ---
 
-### 2. Create a ROS 2 Workspace
-
-```bash
-mkdir -p ~/ros2_ws/src
-cd ~/ros2_ws/src
-```
-
-This creates a standard ROS 2 workspace layout:
-
-```
-ros2_ws/
- ├── src/
- ├── build/
- ├── install/
- └── log/
-```
-
----
-
-### 3. Clone the AR4 ROS Driver
+### 1. Clone the AR4 ROS Driver
 
 ```bash
 git clone https://github.com/Annin-Robotics/ar4_ros_driver.git
 ```
 
-Your workspace should now look like:
-
-```
-~/ros2_ws/src/ar4_ros_driver
-```
-
 ---
+### 2. Enter Docker container
+
+```bash
+cd ~/ar4_ros_driver
+./run_in_docker.sh
+```
+---
+
 
 ### 4. Install ROS Dependencies
 
